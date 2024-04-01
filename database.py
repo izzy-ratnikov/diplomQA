@@ -16,7 +16,27 @@ cursor = conn.cursor()
 cursor.execute("SELECT * FROM anime")
 for i in cursor.fetchall():  # noqa C901
     print(f"{i[1]} - {i[2]} - {i[3]}- {i[4]}- {i[5]}- {i[6]}")
-
+print("----------------------------------")
+'''
+1) Вывести user_id с названием аниме и статусом "watching"
+'''
+cursor.execute("SELECT * FROM anime WHERE status='watching' ")
+for i in cursor.fetchall():  # noqa C901
+    print(f"{i[1]} - {i[2]} - {i[6]}")
+print("----------------------------------")
+'''
+2) Вывести отсортированный user_id с названием аниме
+'''
+cursor.execute("SELECT * FROM anime ORDER BY user_id")
+for i in cursor.fetchall():  # noqa C901
+    print(f"{i[1]} - {i[2]}")
+print("----------------------------------")
+'''
+3) Вывести отсортированное anime по году
+'''
+cursor.execute("SELECT * FROM anime ORDER BY year")
+for i in cursor.fetchall():  # noqa C901
+    print(f"{i[2]} - {i[3]}")
 # cursor.execute("DROP TABLE orders")
 # conn.commit()
 cursor.close()
